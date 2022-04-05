@@ -1,9 +1,18 @@
-import {useState} from 'react';
+import {useEffect} from 'react';
+import { useDispatch} from 'react-redux';
 
+import { getDiarys } from './actions/diarys';
+
+// import Forms from './components/Forms/Forms';
 function App() {
+    const dispatch = useDispatch;
+
+    useEffect( () => {
+        dispatch(getDiarys());
+    }, [dispatch])
     return (
-        <div className="">
-            <Form />
+        <div className="bg-green-50">
+            hi
         </div>
     )
 }
