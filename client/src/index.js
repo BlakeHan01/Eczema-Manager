@@ -1,4 +1,4 @@
-import  ReactDOM from "react-dom";
+import * as ReactDOM from 'react-dom/client';
 //redux
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
