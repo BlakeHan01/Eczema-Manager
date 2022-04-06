@@ -10,4 +10,5 @@ const diarySchema = mongoose.Schema({
     createdAt: {type: Date},
 });
 
-export default diarySchema;
+const Diary = mongoose.model('Diary', diarySchema);
+export default Diary;
