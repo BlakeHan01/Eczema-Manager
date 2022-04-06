@@ -3,7 +3,7 @@ import { useDispatch} from 'react-redux';
 
 import { getDiarys } from './actions/diarys';
 import Diarys from './components/Diarys/Diarys'
-// import Forms from './components/Forms/Forms';
+import Forms from './components/Forms/Forms';
 const App = () => {
     const dispatch = useDispatch();
 
@@ -11,8 +11,9 @@ const App = () => {
         dispatch(getDiarys());
     }, [dispatch])
     return (
-        <div className="bg-green-50">
+        <div >
             <Diarys />
+            <Forms />
         </div>
     )
 }

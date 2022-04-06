@@ -12,7 +12,7 @@ const container = document.getElementById('root');
 // Create a root.
 const root = ReactDOM.createRoot(container);
 
-import reducers from './reducers'
+import reducers from './reducers';
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
