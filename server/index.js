@@ -18,7 +18,7 @@ app.get('/',(req,res)=>{
    res.send('hello ya');
 })
 
-const CONNECTION_URL = `mongodb+srv://Blake:Blakehan2001@cluster0.tmcce.mongodb.net/eczema_forum?retryWrites=true&w=majority`;
+const CONNECTION_URL = 'mongodb+srv://Blake:Blakehan2001@cluster0.tmcce.mongodb.net/eczema_forum?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
