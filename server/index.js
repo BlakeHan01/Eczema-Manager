@@ -14,9 +14,7 @@ app.use(cors());
 
 app.use('/diarys', diaryRoutes);
 
-app.get('/',(req,res)=>{
-   res.send('hello ya');
-})
+
 
 const CONNECTION_URL = 'mongodb+srv://Blake:Blakehan2001@cluster0.tmcce.mongodb.net/eczema_forum?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;

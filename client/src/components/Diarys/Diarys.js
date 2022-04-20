@@ -10,10 +10,9 @@ const Diarys = ({setCurrentId}) => {
   const diarys = useSelector((state) => state.diarys);
   return (
       !diarys.length ? 'nothing to be shown': 
-        <div>
+        <div className="bg-transparent w-1/2 border-2 border-blue-400 border-opacity-50">
           {diarys.map((diary)=>
             <div key={diary._id}>
-              
               <Diary diary={diary} setCurrentId={setCurrentId}/>
             </div>
           )}

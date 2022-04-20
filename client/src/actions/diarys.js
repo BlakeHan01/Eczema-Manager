@@ -22,3 +22,12 @@ export const createDiary = (diary) => async(dispatch) => {
         console.log('error is ', error);
     }
 }
+
+export const updateDiary = (id, diary) => async(dispatch) => {
+    try{
+        const {data} = await api.updateDiary(id, diary);
+        dispatch({type: 'UPDATE', payload: data})
+    } catch(error) {
+        console.log('error is', error);
+    }
+}

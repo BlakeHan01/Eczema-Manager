@@ -1,17 +1,20 @@
 # Eczema-Manager
 
-Website link: 
+## Overview
+This is an app for eczema suffers to have a platform to log their daily diaries.
+
+#### Website link
+
 - https://eczema-forum.netlify.app/
 
 
 On process of building a platform for eczema patients to post diarys with login features, and users will be able to like, comment on posts, and live communications.
 
-Research:
+## Research
 
-- React and redux(Significant progress, code in the entire client side)
-- Axios(Significant progress, code in https://github.com/BlakeHan01/Eczema-Manager/tree/main/client/src/api)
-- Tailwind CSS (Significant progress, code in https://github.com/BlakeHan01/Eczema-Manager/blob/main/client/src/components/Forms/Forms.js)
-- socket.io (potentially not implementing)
+- React and redux(6 points, significant progress, code in the entire client side)
+- Axios(2 points, Significant progress, code in client/public/src/actions and api)
+- Tailwind CSS (2 points, Significant progress, code in all React components)
 
 Form: 
 - Add to Mongodb Atlas database and presentable in the website. 
