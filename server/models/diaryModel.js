@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const diarySchema = mongoose.Schema({
+export const diarySchema = mongoose.Schema({
     skinQuality: {type: String, required: true},
     sleepQuality: String,
     mood: String,

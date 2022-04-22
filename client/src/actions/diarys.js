@@ -31,3 +31,4 @@ export const updateDiary = (id, diary) => async(dispatch) => {
         console.log('error is', error);
     }
 }
+

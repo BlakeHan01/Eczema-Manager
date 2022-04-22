@@ -1,13 +1,24 @@
 import { useSelector } from 'react-redux';
-
+import {useState, useEffect} from 'react';
 import Diary from './Diary/Diary';
 
-const Diarys = ({setCurrentId}) => {
+const Diarys = ({currentUser, setCurrentId}) => {
 // code for testing whether I have React duplcates
 //   window.React2 = require('react');
 // console.log(window.React1 === window.React2);
     //state.diarys is from reducers/index
-  const diarys = useSelector((state) => state.diarys);
+    // console.log(currentUser);
+    const [diarys, setDiarys] = useState([]);
+    // if(currentUser){
+    //   setDiarys(currentUser.diarys);
+    // }
+    useEffect(()=>{
+      if(currentUser){
+        console.log('diarys:: ',currentUser);
+        setDiarys(currentUser.diarys)
+        console.log(diarys, ' is diarys')
+      }
+    }, [currentUser])
   return (
       !diarys.length ? 'nothing to be shown': 
         <div className="bg-transparent w-1/2 border-2 border-blue-400 border-opacity-50">
