@@ -1,13 +1,13 @@
 import { useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import {createDiary, postDiary, updateDiary} from '../../actions/diarys'
-const Forms = ({currentId, setCurrentId}) => { 
+const Forms = ({setDiarys, diarys, currentUser, currentId, setCurrentId}) => { 
 	const [postDiary, setPostDiary] = useState({
 		skinQuality:'', sleepQuality:'', mood:'', allergens:'', activities:'', message:''
 	});
-	const diary = useSelector((state) => (currentId ? state.diarys.find((message)=> message._id == currentId) : null));
+	const diary = useSelector((state) => (currentId ? currentUser.diarys.find((message)=> message._id == currentId) : null));
 	const dispatch = useDispatch();
-
+	const [err, setErr] = useState('');
 	useEffect(()=>{
 		if(diary) {
 			setPostDiary(diary)
@@ -20,18 +20,32 @@ const Forms = ({currentId, setCurrentId}) => {
 	}
 	const onSubmit = async (e)=>{
 		e.preventDefault();
-	
-		if(currentId===0){
-			dispatch(createDiary(postDiary));
+		setErr('');
+		if(postDiary.skinQuality === null || postDiary.skinQuality === '' || postDiary.skinQuality === undefined){
+			setErr('Please have something down for your skin quality :)')
 		} else{
-			dispatch(updateDiary(currentId, postDiary))
+			if(currentId===0){
+				dispatch(createDiary(currentUser, postDiary));
+				setDiarys([...diarys, postDiary]);
+			} else{
+				console.log(diarys);
+				dispatch(updateDiary(currentUser, currentId, postDiary))
+				setDiarys(diarys.map(e=>{
+					if(e._id === postDiary._id){
+						return e= postDiary;
+					} else{
+						return e;
+					}
+				}));
+			}
 		}
 		clear();
 	}
-	
 
 	return (
+		
 		<form className="px-4 py-4 bg-transparent" onSubmit={onSubmit}>
+			{!!err && <div className='text-red-300 border-2 border-brown-400 font-bold bg-white'>{err}</div>}
 			<div className="grid grid-cols-1 grid-rows border-2 hover:border-3 bg-white">
 				<h2 className="ml-2 mt-2 mb">skin quality</h2>
 				<input type="text" value={postDiary.skinQuality} onChange={(e) => setPostDiary({...postDiary, skinQuality:e.target.value})} placeholder="redness on neck and face" className="w-[46rem] mx-2 mt-1 block  px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500"/>

@@ -1,42 +1,59 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-
+// import cookieSession from 'cookie-session';
 import diaryRoutes from './routes/diarys.js';
 import userRoutes from './controllers/user.js'
+import passport from 'passport';
+
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
-app.use(bodyParser.json({ limit: '30mb', extended: true }))
-app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
-app.use(cors());
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+
 import session from 'express-session';
+
 
 // after login, don't have to enter username and pw again
 // ...so sessions
 const sessionOptions = { 
   secret: 'secret for signing session id', 
-  saveUninitialized: false, 
-  resave: false 
+  saveUninitialized: true, 
+  resave: false,
+  cookie: { Secure: true, SameSite: 'none' }
 };
 
 app.use(session(sessionOptions));
 
-app.use((req, res, next) => {
-  console.log('session contains', req.session);
-  next();
+app.use(passport.initialize());
+app.use(passport.session());
+import './auth.js'
+
+// app.use((req, res, next) => {
+//   console.log('session contains', req.session);
+//   next();
+// });
+
+app.use(function(req, res, next){
+	res.locals.user = req.user;
+	next();
 });
 
 // have middleware that deserializes the logged in user
 // if req.session.user exists, then create property req.user that contains the user obj
-app.use(async (req, res, next) => {
-  if(req.session.username) {
-    req.user = await User.findOne({username: req.session.username}).exec();
-  }
-  next();
-});
+// app.use(async (req, res, next) => {
+//   console.log(req.session, ' is middleware req.session');
+//   if(req.session.username) {
+//     req.user = await User.findOne({username: req.session.username}).exec();
+//   }
+//   next();
+// });
 
+
+//For update pre-flight
+// app.options('/diarys/:id', cors())
 app.use('/diarys', diaryRoutes);
 app.use('/users', userRoutes);
 

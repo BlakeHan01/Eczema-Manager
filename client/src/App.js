@@ -12,21 +12,33 @@ const App = () => {
     const dispatch = useDispatch();
     const [currentId, setCurrentId] = useState(0);
     const [currentUser, setCurrentUser] = useState(null);
+    const [diarys, setDiarys] = useState([]);
+    useEffect(()=>{
+        // console.log(currentUser.diarys, ' current diarys');
+        if(currentUser){
+          setDiarys(currentUser.diarys)
+        }
+      }, [currentUser])
+    useEffect(()=>{
+        if(currentUser){
+          getDiarys(currentUser)
+        }
+      }, [currentUser])
     // useEffect( () => {
-    //     dispatch(getDiarys());
+    //     dispatch(getDiarys(currentUser));
     // }, [currentId, dispatch])
     return (
         <div className="flex w-full m-20 mt-4">
-            {!currentUser && <>
+            {!currentUser && <div className="flex items-center">
                 <Register setCurrentUser={setCurrentUser}/>
                 <Login setCurrentUser={setCurrentUser}/>
-            </>}
+            </div>}
             {currentUser ?  <>
-                <Diarys className="flex-1 w-1/2" currentUser={currentUser} setCurrentId={setCurrentId}/>
-                <Forms className="flex-auto" currentId={currentId} setCurrentId={setCurrentId}/>
+                <Diarys className="flex-1 w-1/2" diarys={diarys} currentUser={currentUser} setCurrentId={setCurrentId}/>
+                <Forms className="flex-auto" diarys={diarys} setDiarys={setDiarys} currentUser={currentUser} currentId={currentId} setCurrentId={setCurrentId}/>
                 <Logout setCurrentUser={setCurrentUser}/>
             </>:
-            'nothing to be shown'
+            ''
             
             }
         </div>

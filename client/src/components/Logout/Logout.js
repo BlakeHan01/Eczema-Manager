@@ -8,7 +8,7 @@ const Logout = ({setCurrentUser}) => {
   return (
     <div>
         <form onSubmit={onSubmit}>
-            <input type="submit" value="Logout"/>
+            <input className="bg-white mt-3 hover:rounded hover:bg-pink-200 border-pink-300 border-2 px-2 py-0.5" type="submit" value="Logout"/>
         </form>
     </div>
   )

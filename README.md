@@ -12,11 +12,11 @@ On process of building a platform for eczema patients to post diarys with login 
 
 ## Research
 
-- React and redux(6 points, significant progress, code in the entire client side)
-- Axios(2 points, Significant progress, code in client/public/src/actions and api)
-- Tailwind CSS (2 points, Significant progress, code in all React components)
+- React(6 points)
+- Redux(1 point, tedious for small projects so only used halfway)
+- Axios(2 points)
+- Tailwind CSS (2 points)
 
-Form: 
-- Add to Mongodb Atlas database and presentable in the website. 
+
 
 

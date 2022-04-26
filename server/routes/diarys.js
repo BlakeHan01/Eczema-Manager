@@ -4,10 +4,10 @@ import {getDiarys, getDiary, createDiary, updateDiary, deleteDiary} from "../con
 
 const router = express.Router();
 
-router.get('/', getDiarys);
+router.get('/:id', getDiarys);
 router.post('/', createDiary);
 router.get('/:id', getDiary);
-router.patch('/:id', updateDiary);
+router.patch('/:id/:id', updateDiary);
 // router.delete('/:id', deleteDiary);
 
 export default router;
