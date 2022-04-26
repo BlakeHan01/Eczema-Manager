@@ -57,6 +57,10 @@ app.use(function(req, res, next){
 app.use('/diarys', diaryRoutes);
 app.use('/users', userRoutes);
 
+app.get('/',(req,res)=>{
+  res.send('test Heroku')
+})
+
 const CONNECTION_URL = 'mongodb+srv://Blake:Blakehan2001@cluster0.tmcce.mongodb.net/eczema_forum?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
 
