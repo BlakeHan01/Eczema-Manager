@@ -11,7 +11,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use(cors({credentials: true, origin: 'https://eczema-forum.netlify.app/'}));
+
+//test
+app.use(cors({credentials: true, origin: 'https://eczema-forum.netlify.app'}));
 
 import session from 'express-session';
 

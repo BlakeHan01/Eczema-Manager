@@ -17,6 +17,15 @@ On process of building a platform for eczema patients to post diarys with login 
 - Axios(2 points)
 - Tailwind CSS (2 points)
 
+## Forms
+- Axios fetch, update, and create
+
+## Security and stability
+- User unable to register if username taken, will display warning
+- User unable to sign in if username or password incorrect, will display warning
+- User cannot submit a form with the skin quality field empty, will display warning
+
+
 
 
 
