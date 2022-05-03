@@ -3,7 +3,7 @@ import express from "express";
 
 import Diary from "../models/diaryModel.js"
 import User from "../models/userModel.js"
-
+//test
 const router = express.Router();
 
 export const getDiarys = async(req,res) => {
